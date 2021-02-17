@@ -25,8 +25,9 @@ uploaded_file = st.sidebar.file_uploader(
 
 # SITE HEADER AND INTRO TO THE PROJECT
 with siteHeader:
-    st.title('Ironhack Final project!')
-    st.text('test test test')
+    st.title('Machine Learning Models Comparison')
+    st.markdown('''The dataset used for this project was taken out of the following URL:
+**https://www.kaggle.com/sakshigoyal7/credit-card-customers**''')
 
 # DF EXPLORATION AND VISUALIZATION PLUS ATTEMPT AT HEAT-MAP
 with dataExploration:
@@ -114,13 +115,11 @@ with dataExploration:
         st.header('Intercorrelation Matrix Heatmap')
         df = pd.read_csv(uploaded_file)
 
-        corr = df.corr()
-        mask = np.zeros_like(corr)
-        mask[np.triu_indices_from(mask)] = True
-        with sns.axes_style("white"):
-            f, ax = plt.subplots(figsize=(7, 5))
-            ax = sns.heatmap(corr, mask=mask, vmax=1, square=True)
-        st.pyplot()
+        corr = pd.concat([cat_df, y], axis=1).corr()
+
+        plt.figure(figsize=(12, 10))
+        sns.heatmap(corr, annot=True, vmin=-1.0, cmap='crest', linewidths=.5)
+        plt.show()
 
 with newFeatures:
     st.header('New features I came up with')
@@ -129,22 +128,3 @@ with newFeatures:
 with modelTraining:
     st.header('Model training')
     st.text('In this section you can select the Hyperparameters')
-
-    selection_col, display_col = st.beta_columns(2)
-
-    max_depth = selection_col.slider
-    ('Max depth of the model',
-    min_value=10,
-    max_value=100,
-    value=20,
-    step=10)
-
-    number_of_trees = selection_col.selectbox
-    ('How many trees should there be?',
-    options=[100,200,300,'No limit'],
-    index=0)
-
-    selection_col.text('Here is a list of features: ')
-    selection_col.write(uploaded_file.columns)
-    input_feature = selection_col.text_input
-    ('Which feature would you like to input to the model?')
