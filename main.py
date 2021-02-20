@@ -47,6 +47,7 @@ uploaded_file = st.sidebar.file_uploader(
 
 # SITE HEADER AND INTRO TO THE PROJECT
 with siteHeader:
+    st.image('banner.png')
     st.title('Machine Learning Models Comparison')
     st.markdown('''The dataset used for this project was taken out of the following URL:
 **https://www.kaggle.com/sakshigoyal7/credit-card-customers**''')
@@ -70,17 +71,19 @@ with dataExploration:
 
     # THE FOLLOWING SET OF FUNCTIONS ARE FOR LATER WHEN MODELLING
     # WE ENCODE FIRST TO ASSIGN "VALUES" TO OUR CATEGORICAL DATA COLUMNS
-
+    @st.cache
     def binary_encoding(df, column, positive_value):
         df = df.copy()
         df[column] = df[column].apply(lambda x: 1 if x == positive_value else 0)
         return df
 
+    @st.cache
     def ordinal_encoding(df, column, ordering):
         df = df.copy()
         df[column] = df[column].apply(lambda x: ordering.index(x))
         return df
 
+    @st.cache
     def onehot_encoding(df, column, prefix):
         df = df.copy()
         dummies = pd.get_dummies(df[column], prefix=prefix)
@@ -288,3 +291,5 @@ with display_col:
 with theEnd:
     if st.button("Thank you!"):
         st.balloons()
+
+    st.image('reverse.png')
