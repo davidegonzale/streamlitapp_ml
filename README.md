@@ -1,5 +1,8 @@
 # Ironhack Final Project
 
+![alt text](machinelearning.jpg "Machine Learning")
+
+
 
 ### Machine learning models comparison 
 
