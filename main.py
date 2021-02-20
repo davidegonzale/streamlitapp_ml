@@ -1,3 +1,4 @@
+# IMPORT LIBRARIES
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -15,8 +16,8 @@ from sklearn.svm import SVC
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.neural_network import MLPClassifier
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import mean_absolute_error
 
+# IGNORE WARNINGS
 import warnings
 warnings.filterwarnings("ignore")
 
@@ -28,6 +29,7 @@ siteHeader = st.beta_container()
 dataExploration = st.beta_container()
 newFeatures = st.beta_container()
 modelTraining = st.beta_container()
+theEnd = st.beta_container()
 
 
 # CONFIGURATION
@@ -210,15 +212,7 @@ with newFeatures:
 
     further_select = st.selectbox(
     label="Select the chart type",
-    options=['Boxplot', 'Distplot', 'Pairplot', 'Heatmap'])
-
-    if further_select == 'Boxplot':
-        plt.figure(figsize=(24, 15))
-
-        for i in range (len(cat_df.columns)-1):
-            plt.subplot(3,3,i+1)
-            sns.boxplot(cat_df[cat_df.columns[i]])
-        st.pyplot()
+    options=['Distplot', 'Boxplot', 'Pairplot', 'Heatmap'])
 
     if further_select == 'Distplot':
         plt.figure(figsize=(24, 15))
@@ -226,6 +220,14 @@ with newFeatures:
         for i in range(len(cat_df.columns) - 1):
             plt.subplot(3, 3, i + 1)
             sns.distplot(cat_df[cat_df.columns[i]])
+        st.pyplot()
+
+    if further_select == 'Boxplot':
+        plt.figure(figsize=(24, 15))
+
+        for i in range (len(cat_df.columns)-1):
+            plt.subplot(3,3,i+1)
+            sns.boxplot(cat_df[cat_df.columns[i]])
         st.pyplot()
 
     if further_select == 'Pairplot':
@@ -236,7 +238,7 @@ with newFeatures:
     if further_select == 'Heatmap':
         corr = pd.concat([cat_df, y], axis=1).corr()
         plt.figure(figsize=(12, 10))
-        sns.heatmap(corr, annot=True, vmin=-1.0, cmap='crest', linewidths=.5)
+        sns.heatmap(corr, annot=True, vmin=-1.0, cmap='YlGnBu', linewidths=.5)
         st.pyplot()
 
 with modelTraining:
@@ -282,3 +284,7 @@ with display_col:
     if st.checkbox("Show Model Scores"):
         for model, name in zip(models, model_names):
             st.write(name + ": {:.4f}%".format(model.score(X_test, y_test) * 100))
+
+with theEnd:
+    if st.button("Thank you!"):
+        st.balloons()
