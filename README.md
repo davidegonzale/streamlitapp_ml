@@ -1,8 +1,10 @@
 # Ironhack Final Project
 
+
 ### Machine learning models comparison 
 
 #### 1 Brain Storming and Data Preparation: 
+
 
 In the early stages of this course I realised what it is that I would be liking the most, and so I decided to focus myself mostly in that area; this area is the **coding** part, meaning building an infrastructure for people to have better use of their **data**. Visualization it is of course important but it wasn't my sole focus. 
 
@@ -17,6 +19,7 @@ https://www.kaggle.com/sakshigoyal7/credit-card-customers
 Analysis will be very simple, basic ETL, cleaning, standardize the data, split the training sets, fit them into 5 different models, and compare the scores. 
 
 
+
 #### 2 Exploratory Analysis: 
 
 There's two parts of visualization inside this app: 
@@ -26,19 +29,21 @@ There's two parts of visualization inside this app:
 **2)** After transformation- this falls into further analysis, after standarization of the data. Here the user wil, be able to find trends and perform a visual analysis (**ex. pairplot**) to come to their own conclusions. 
 
 
+
 #### 3 Data Analysis & Model training: 
 
 As mentioned in the beginning, we will be fitting out data into 5 different ML models to compare their scores, these are:
 
-***a) Logistic Regression**
+**a)** Logistic Regression
 
-**b) Support Vector Machine**
+**b)** Support Vector Machine
 
-**c) Decision Tree**
+**c)** Decision Tree
 
-**d) MLP Classifier**
+**d)** MLP Classifier
 
-**e) Random Forest Classifier***
+**e)** Random Forest Classifier
+
 
 
 #### 4 The app: 
