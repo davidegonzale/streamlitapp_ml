@@ -55,7 +55,7 @@ Because the app is self interactive, the story telling happens at the same time 
 
 This library offers a wide range of options, and even showed me a bit of HTML, among other things like building a defensive code. There are still many things to improve like **cache** and my app not running **everything** everytime a parameter is changed during the interaction; this consumes a lot of memory and time, and I it could definitely be faster.
 
-Please feel free to add thing to my code, I would love to make it better and keep learning from other people. 
+Please feel free to add contributions to my code, I would love to make it better and keep learning from other people. 
 
 
 ![alt text](ironhackberlin.jpg "Ironhack")
